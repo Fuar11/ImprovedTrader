@@ -1,0 +1,77 @@
+﻿<Project Sdk="Microsoft.NET.Sdk" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" encoding="UTF-8">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<LangVersion>Latest</LangVersion>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+		<DebugType>none</DebugType>
+	</PropertyGroup>
+	
+	<PropertyGroup>
+		<GenerateDocumentationFile>True</GenerateDocumentationFile>
+		<PackageProjectUrl>https://github.com/Arkhorse/TLD-Mod-ImprovedTrader</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/Arkhorse/TLD-Mod-ImprovedTrader</RepositoryUrl>
+		<PackageTags>the long dark;the long dark mods</PackageTags>
+		<NeutralLanguage>en-CA</NeutralLanguage>
+		<PackageLicenseFile>LICENSE</PackageLicenseFile>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<TheLongDarkPath>C:\Program Files (x86)\Steam\steamapps\common\TheLongDark</TheLongDarkPath>
+		<Mods>$(TheLongDarkPath)\Mods</Mods>
+		<Plugins>$(TheLongDarkPath)\Plugins</Plugins>
+		<UserData>$(TheLongDarkPath)\UserData</UserData>
+		<UserLibs>$(TheLongDarkPath)\UserLibs</UserLibs>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Include="..\LICENSE">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+	</ItemGroup>
+
+	<!-- List of used references -->
+	<ItemGroup>
+		<!-- This is the base reference. MUST EXIST -->
+		<PackageReference Include="Waltz.Modding.TLD.Il2CppAssemblies.Windows" Version="2.52.0" />	
+	</ItemGroup>
+	<ItemGroup>
+	  <Reference Include="ComplexLogger">
+	    <HintPath>$(Mods)\ComplexLogger.dll</HintPath>
+	  </Reference>
+
+		<Reference Include="ModSettings">
+			<HintPath>$(Mods)\ModSettings.dll</HintPath>
+		</Reference>
+
+		<Reference Include="ModData">
+			<HintPath>$(Mods)\ModData.dll</HintPath>
+		</Reference>
+	</ItemGroup>
+
+	<!-- Most commonly used using's. Add to this so you dont need to define them in the cs files -->
+	<ItemGroup>
+		<Using Include="System.Reflection" />
+		<Using Include="System.Diagnostics.CodeAnalysis" />
+		<Using Include="Il2Cpp" />
+		<Using Include="HarmonyLib" />
+		<Using Include="MelonLoader" />
+		<Using Include="UnityEngine" />
+		<!--#region Modded Libraries-->
+		<!-- Only if your using ModSettings -->
+		<Using Include="ModSettings" />
+		<!-- Only if your using ModData -->
+		<Using Include="ModData" />
+		<!--#endregion-->
+	</ItemGroup>
+
+	<!-- This is a build event. It will copy your dll to the currently defined TheLongDarkPath's Mods folder -->
+	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
+		<!-- This copies the mods files to the games mod dir -->
+		<Copy SourceFiles="$(TargetPath)" DestinationFolder="$(Mods)" />
+	</Target>
+
+</Project>
