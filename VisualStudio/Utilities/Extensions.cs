@@ -27,7 +27,6 @@ namespace ImprovedTrader.Utilities
 
             System.Collections.Generic.List<T?> objects = new();
 
-#pragma warning disable CS8602
             foreach (var type in System.Reflection.Assembly.GetAssembly(typeof(T)).GetTypes().Where(
                 t => t.IsClass
                 && !t.IsAbstract
@@ -36,7 +35,6 @@ namespace ImprovedTrader.Utilities
             {
                 objects.Add(System.Activator.CreateInstance(type, constructorArgs) as T);
             }
-#pragma warning restore CS8602
 
             try
             {
@@ -47,10 +45,30 @@ namespace ImprovedTrader.Utilities
                 Main.Logger.Log($"GetEnumerableOfType::Attempting to sort the objects list failed", FlaggedLoggingLevel.Exception, e);
             }
 
-#pragma warning disable CS8619
             // returns null if the list is null or has nothing in it
             return (objects == null) ? null : (objects.Count > 0) ? objects : null;
-#pragma warning restore CS8619
+        }
+
+        public static iTweenEvent Initialize(this iTweenEvent ite, string name, float rotation, float speed = 1f)
+        {
+            ite.animating = false;
+            ite.playAutomatically = false;
+            ite.tweenName = name;
+            ite.type = iTweenEvent.TweenType.RotateBy;
+            ite.vector3s = new Vector3[] { new Vector3(0, rotation, 0) };
+            ite.floats = new float[] { speed };
+            ite.keys = new string[] { "time", "amount" };
+            ite.indexes = new int[] { 0, 0 };
+
+            return ite;
+        }
+
+        public static ObjectAnim Initialize(this ObjectAnim oa, GameObject target)
+        {
+            oa.m_Target = target;
+            oa.Start();
+
+            return oa;
         }
     }
 }

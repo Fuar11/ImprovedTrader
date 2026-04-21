@@ -6,6 +6,7 @@ global using System.Text.RegularExpressions;
 #region Il2Cpp Directives
 global using Il2CppInterop.Runtime;
 global using Il2CppTLD.Gear;
+global using AssetHelper = Il2CppTLD.AddressableAssets.AssetHelper;
 #endregion
 #region Unity Directives
 global using UnityEngine.AddressableAssets;
@@ -40,14 +41,18 @@ namespace ImprovedTrader
         /// <inheritdoc/>
         public override void OnSceneWasInitialized(int buildIndex, string sceneName)
         {
-            base.OnSceneWasInitialized(buildIndex, sceneName);
+            if (sceneName == "LakeRegion")
+            {
+                TraderBoxHelper.InstantiateTraderBox(Vector3.zero, Vector3.zero);
+            }
         }
 
         // Triggered when the scene has finished loading
         /// <inheritdoc/>
         public override void OnSceneWasLoaded(int buildIndex, string sceneName)
         {
-            base.OnSceneWasLoaded(buildIndex, sceneName);
+
+          
         }
 
         // triggered when scenes are unloaded

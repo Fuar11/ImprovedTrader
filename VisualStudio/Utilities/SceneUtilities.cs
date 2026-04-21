@@ -150,5 +150,36 @@ namespace ImprovedTrader.Utilities
 				&& (( IsSceneBase(sceneName) && !(IsSceneAdditive(sceneName)) ) && !GameManager.GetWeatherComponent().IsIndoorScene())
 				|| (GameManager.GetWeatherComponent().IsIndoorScene() && IndoorOverride);
 		}
-	}
+
+        public static void InstantiateObjectInScene(GameObject prfb, Vector3 pos, Vector3 rot)
+        {
+            if (prfb == null)
+            {
+                Main.Logger.Log("GameObject is null", FlaggedLoggingLevel.Debug);
+                return;
+            }
+
+            GameObject go = GameObject.Instantiate<GameObject>(prfb);
+            go.transform.position = pos;
+            go.transform.rotation = Quaternion.Euler(rot);
+			go.name = "FUAR_" + go.name;
+        }
+
+        /**public static void InstantiateObjectInScene(string name, Vector3 pos, Vector3 rot)
+        {
+
+            GameObject prfb = AssetUtils.GetPrefab(name);
+
+            if (prfb == null)
+            {
+                Main.Logger.Log($"Prefab is null", FlaggedLoggingLevel.Debug);
+                return;
+            }
+
+            GameObject go = GameObject.Instantiate<GameObject>(prfb);
+            go.transform.position = pos;
+            go.transform.rotation = Quaternion.Euler(rot);
+            go.name = "FUAR_" + go.name;
+        }**/
+    }
 }
