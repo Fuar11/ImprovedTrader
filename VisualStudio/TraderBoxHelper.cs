@@ -51,7 +51,21 @@ namespace ImprovedTrader
             exchange.m_BoxOpenEvent = new() { WwiseObjectReference = new() { id = 1041331915, guid = "19EA54D7-E211-48C7-9D17-E39C26C6BDB0", objectName = "play_Trader_Interaction_ExchangeBox_Open" } };
             exchange.m_BoxCloseEvent = new() { WwiseObjectReference = new() { id = 4238822553, guid = "4293A7A6-54A9-4CB0-8816-3850ED5E8752", objectName = "play_Trader_Interaction_ExchangeBox_Close" } };
 
-            exchange.SetLocked(false); //temporary
+            GearItem potableWater = Addressables.LoadAssetAsync<GameObject>("GEAR_WaterSupplyPotable").WaitForCompletion().GetComponent<GearItem>();
+            GearItem nonPotableWater = Addressables.LoadAssetAsync<GameObject>("GEAR_WaterSupplyNonPotable").WaitForCompletion().GetComponent<GearItem>();
+
+            if (potableWater == null || nonPotableWater == null)
+            {
+                Main.Logger.Log("Error getting water gear item data", FlaggedLoggingLevel.Error);
+                return;
+            }
+
+            exchange.m_PotableWaterSupply = potableWater.GearItemData;
+            exchange.m_NonPotableWaterSupply = nonPotableWater.GearItemData;
+
+            exchange.SetLocked(false); 
+
+
 
             exchange.enabled = true;
 
@@ -59,6 +73,19 @@ namespace ImprovedTrader
             tradeBoxParent.transform.rotation = Quaternion.Euler(rotation);
             tradeBox.SetActive(true);
             tradeBoxParent.SetActive(true);
+
+            var tm = GameManager.m_TraderManager;
+            var trade = tm.GetActiveTrade();
+
+            if (trade != null)
+            {
+                Main.Logger.Log("Adding trade to custom box", FlaggedLoggingLevel.Debug);
+                exchange.SetActiveTrade(trade);
+            }
+            else
+            {
+                Main.Logger.Log("No active trade found", FlaggedLoggingLevel.Error);
+            }
 
             //SceneUtilities.InstantiateObjectInScene(tradeBox, position, rotation);
         }

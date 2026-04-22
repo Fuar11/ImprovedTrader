@@ -20,9 +20,6 @@ namespace ImprovedTrader.Patches
 
             public static void Postfix(ref bool __result)
             {
-
-                Main.Logger.Log("Postfix calling", FlaggedLoggingLevel.Debug);
-
                 var availableDays = Settings.Instance.traderAvailableDays * 24f;
 
                 __result = GameManager.GetTimeOfDayComponent().GetHoursPlayedNotPaused() >= availableDays;
@@ -30,17 +27,17 @@ namespace ImprovedTrader.Patches
 
         }
 
-        [HarmonyPatch(typeof(TimedHoldInteraction), nameof(TimedHoldInteraction.PerformHold))]
+        [HarmonyPatch(typeof(TraderManager), nameof(TraderManager.InitiateTrade))]
 
-        public class PerformHoldTest
+        public class DeserializeTest
         {
 
-            public static void Prefix(TimedHoldInteraction __instance)
+            public static void Prefix(ref List<TradeExchangeData> exchanges, ref string exchangeBoxScene)
             {
-                Main.Logger.Log($"PerformHold called. CanInteract is {__instance.m_CanInteract}", FlaggedLoggingLevel.Debug);
+
+                exchangeBoxScene = "LakeRegion"; //this is just for testing
+               
             }
-
         }
-
     }
 }
