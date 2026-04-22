@@ -35,8 +35,38 @@ namespace ImprovedTrader.Patches
             public static void Prefix(ref List<TradeExchangeData> exchanges, ref string exchangeBoxScene)
             {
 
-                exchangeBoxScene = "LakeRegion"; //this is just for testing
-               
+                string currentScene = GameManager.m_ActiveScene;
+
+                switch (currentScene)
+                {
+                    case "CampOffice": 
+                        exchangeBoxScene = "RavineTransitionZone";
+                        break;
+                    case "CommunityHallA": 
+                        exchangeBoxScene = "RuralRegion";
+                        break;
+                    case "CanneryTrailerA":
+                        exchangeBoxScene = "CanneryRegion";
+                        break;
+                    case "AirfieldRegion":
+                        exchangeBoxScene = "LongRailTransitionZone";
+                        break;
+                    case "HubRegion":
+                        exchangeBoxScene = "LongRailTransitionZone";
+                        break;
+                    case "MiningRegion":
+                        exchangeBoxScene = "LongRailTransitionZone";
+                        break;
+                    case "TracksRegion":
+                        exchangeBoxScene = "MarshRegion";
+                        break;
+                    case "PostOfficeA":
+                        exchangeBoxScene = "MarshRegion";
+                        break;
+                    case "BlackrockPrisonSurvivalZone":
+                        exchangeBoxScene = "CanyonRoadTransitionZone";
+                        break;
+                }
             }
         }
     }

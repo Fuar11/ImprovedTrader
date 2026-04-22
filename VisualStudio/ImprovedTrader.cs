@@ -41,9 +41,28 @@ namespace ImprovedTrader
         /// <inheritdoc/>
         public override void OnSceneWasInitialized(int buildIndex, string sceneName)
         {
-            if (sceneName == "LakeRegion")
+          
+
+            switch (sceneName)
             {
-                TraderBoxHelper.InstantiateTraderBox(Vector3.zero, Vector3.zero);
+                case "RavineTransitionZone":
+                    TraderBoxHelper.InstantiateTraderBox(new Vector3(-826.08f, 133.77f, -113.76f), Vector3.zero); //train derailment
+                    break;
+                case "RuralRegion":
+                    TraderBoxHelper.InstantiateTraderBox(new Vector3(1444.60f, 87.42f, 2674.24f), Vector3.zero); //derelict cabins
+                    break;
+                case "LongRailTransitionZone":
+                    TraderBoxHelper.InstantiateTraderBox(new Vector3(96.91f, 0.99f, 594.28f), Vector3.zero); //train cars
+                    break;
+                case "MarshRegion":
+                    TraderBoxHelper.InstantiateTraderBox(new Vector3(397.38f, -132.04f, 846.84f), Vector3.zero); //side of tracks
+                    break;
+                case "CanneryRegion":
+                    TraderBoxHelper.InstantiateTraderBox(new Vector3(54.49f, 82.14f, -922.86f), Vector3.zero); //lighthouse
+                    break;
+                case "CanyonRoadTransitionZone":
+                    TraderBoxHelper.InstantiateTraderBox(new Vector3(316.75f, 71.31f, 385.94f), Vector3.zero); //scenic view
+                    break;
             }
         }
 
