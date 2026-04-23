@@ -46,10 +46,6 @@
 		<Reference Include="ModSettings">
 			<HintPath>$(Mods)\ModSettings.dll</HintPath>
 		</Reference>
-
-		<Reference Include="ModData">
-			<HintPath>$(Mods)\ModData.dll</HintPath>
-		</Reference>
 	</ItemGroup>
 
 	<!-- Most commonly used using's. Add to this so you dont need to define them in the cs files -->
@@ -63,8 +59,6 @@
 		<!--#region Modded Libraries-->
 		<!-- Only if your using ModSettings -->
 		<Using Include="ModSettings" />
-		<!-- Only if your using ModData -->
-		<Using Include="ModData" />
 		<!--#endregion-->
 	</ItemGroup>
 

@@ -14,9 +14,6 @@ namespace ImprovedTrader
 
         public static void InstantiateTraderBox(Vector3 position, Vector3 rotation)
         {
-
-            Main.Logger.Log($"Creating new trader box in scene at {position.ToString()}!", FlaggedLoggingLevel.Debug);
-
             GameObject tradeBoxParent = new GameObject("FUAR_TradeBox");
             tradeBoxParent.layer = vp_Layer.InteractiveProp;
             tradeBoxParent.SetActive(false);
@@ -48,8 +45,6 @@ namespace ImprovedTrader
             exchange.m_BoxOpenEvent = new() { WwiseObjectReference = new() { id = 1041331915, guid = "19EA54D7-E211-48C7-9D17-E39C26C6BDB0", objectName = "play_Trader_Interaction_ExchangeBox_Open" } };
             exchange.m_BoxCloseEvent = new() { WwiseObjectReference = new() { id = 4238822553, guid = "4293A7A6-54A9-4CB0-8816-3850ED5E8752", objectName = "play_Trader_Interaction_ExchangeBox_Close" } };
 
-            Main.Logger.Log("Instantiating water supply items", FlaggedLoggingLevel.Debug);
-
             GearItem potableWater = GearItem.LoadGearItemPrefab("GEAR_WaterSupplyPotable");
             GearItem nonPotableWater = GearItem.LoadGearItemPrefab("GEAR_WaterSupplyNotPotable");
 
@@ -61,8 +56,6 @@ namespace ImprovedTrader
 
             exchange.m_PotableWaterSupply = potableWater.m_GearItemData;
             exchange.m_NonPotableWaterSupply = nonPotableWater.m_GearItemData;
-
-            Main.Logger.Log("Set water supply fields", FlaggedLoggingLevel.Debug);
 
             exchange.SetLocked(false); 
 
@@ -78,32 +71,12 @@ namespace ImprovedTrader
 
             if (trade != null)
             {
-                Main.Logger.Log("Adding trade to custom box", FlaggedLoggingLevel.Debug);
                 exchange.SetActiveTrade(trade);
             }
             else
             {
                 Main.Logger.Log("No active trade found", FlaggedLoggingLevel.Error);
             }
-
-            //SceneUtilities.InstantiateObjectInScene(tradeBox, position, rotation);
         }
-
-        private void LoadAndPutItemsInBox()
-        {
-
-            
-
-        }
-
-        public static ExchangeBox GetTraderBox()
-        {
-
-            return null;
-
-        }
-
-    
-
     }
 }

@@ -1,13 +1,4 @@
-﻿// ---------------------------------------------
-// BuildInfo - by The Illusion
-// ---------------------------------------------
-// Reusage Rights ------------------------------
-// You are free to use this script or portions of it in your own mods, provided you give me credit in your description and maintain this section of comments in any released source code
-//
-// Warning !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-// Ensure you change the namespace to whatever namespace your mod uses, so it doesnt conflict with other mods
-// ---------------------------------------------
-
+﻿
 namespace ImprovedTrader
 {
 	/// <summary></summary>
@@ -23,7 +14,7 @@ namespace ImprovedTrader
 		public const string Author                          = "Fuar";
 		/// <summary>Current version</summary>
 		/// <value>This should always be <see href="https://semver.org">Semantic Versioning</see></value>
-		public const string Version                         = "0.0.1";
+		public const string Version                         = "1.0.0";
 		/// <summary>Name used on GUI's, like ModSettings</summary>
 		public const string GUIName                         = "ImprovedTrader";
 		/// <summary>The minimum Melon Loader version that your mod requires</summary>
