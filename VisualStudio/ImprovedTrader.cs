@@ -41,12 +41,6 @@ namespace ImprovedTrader
         /// <inheritdoc/>
         public override void OnSceneWasInitialized(int buildIndex, string sceneName)
         {
-          
-            if(sceneName == "LakeRegion")
-            {
-                TraderBoxHelper.InstantiateTraderBox(Vector3.zero, Vector3.zero); //test
-            }
-
             switch (sceneName)
             {
                 case "RavineTransitionZone":
