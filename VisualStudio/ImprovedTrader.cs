@@ -47,7 +47,7 @@ namespace ImprovedTrader
                     TraderBoxHelper.InstantiateTraderBox(new Vector3(-615.77f, 133.84f, -87.91f), Vector3.zero); //train derailment
                     break;
                 case "RuralRegion":
-                    TraderBoxHelper.InstantiateTraderBox(new Vector3(1444.60f, 87.42f, 2674.24f), new Vector3(0f, 29f, 0f)); //derelict cabins
+                    TraderBoxHelper.InstantiateTraderBox(new Vector3(1820.45f, 92.62f, 2746.90f), new Vector3(0f, 120f, 0f)); //near end of the road
                     break;
                 case "LongRailTransitionZone":
                     TraderBoxHelper.InstantiateTraderBox(new Vector3(96.91f, 0.99f, 594.28f), new Vector3(0f, 178f, 0f)); //train cars
@@ -55,11 +55,14 @@ namespace ImprovedTrader
                 case "MarshRegion":
                     TraderBoxHelper.InstantiateTraderBox(new Vector3(434.9f, -133.25f, 861.03f), new Vector3(0f, 260f, 0f)); //side of tracks
                     break;
+                case "MountainTownRegion":
+                    TraderBoxHelper.InstantiateTraderBox(new Vector3(969.44f, 303.97f, 1236.08f), new Vector3(0f, 150f, 0f)); //side of tracks
+                    break;
                 case "CanneryRegion":
                     TraderBoxHelper.InstantiateTraderBox(new Vector3(54.49f, 82.14f, -922.86f), new Vector3(0f, 180f, 0f)); //lighthouse
                     break;
-                case "CanyonRoadTransitionZone":
-                    TraderBoxHelper.InstantiateTraderBox(new Vector3(317.35f, 71.31f, 385.94f), Vector3.zero); //scenic view
+                case "BlackrockRegion":
+                    TraderBoxHelper.InstantiateTraderBox(new Vector3(-309.76f, 128.20f, -794.32f), new Vector3(0f, 50.71f, 0f)); //bridge truck
                     break;
             }
         }

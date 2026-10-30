@@ -45,8 +45,8 @@ namespace ImprovedTrader
             exchange.m_BoxOpenEvent = new() { WwiseObjectReference = new() { id = 1041331915, guid = "19EA54D7-E211-48C7-9D17-E39C26C6BDB0", objectName = "play_Trader_Interaction_ExchangeBox_Open" } };
             exchange.m_BoxCloseEvent = new() { WwiseObjectReference = new() { id = 4238822553, guid = "4293A7A6-54A9-4CB0-8816-3850ED5E8752", objectName = "play_Trader_Interaction_ExchangeBox_Close" } };
 
-            GearItem potableWater = GearItem.LoadGearItemPrefab("GEAR_WaterSupplyPotable");
-            GearItem nonPotableWater = GearItem.LoadGearItemPrefab("GEAR_WaterSupplyNotPotable");
+            GearItem potableWater = GearItem.InstantiateGearItem("GEAR_WaterSupplyPotable");
+            GearItem nonPotableWater = GearItem.InstantiateGearItem("GEAR_WaterSupplyNotPotable");
 
             if (potableWater == null || nonPotableWater == null)
             {

@@ -1,50 +1,41 @@
-﻿<Project Sdk="Microsoft.NET.Sdk" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" encoding="UTF-8">
+<Project Sdk="Microsoft.NET.Sdk" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" encoding="UTF-8">
 
+	<!-- DO NOT CHANGE ANYTHING BETWEEN THESE (unless you know 100% what you are changing)-->
+	<!-- Further info: This defines critical project details, like the .net version, C# language version, null enable and do not generate assembly info (we need a custom one) -->
 	<PropertyGroup>
 		<TargetFramework>net6.0</TargetFramework>
 		<LangVersion>Latest</LangVersion>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+		<!-- Debug is useless for a mod -->
 		<DebugType>none</DebugType>
 	</PropertyGroup>
-	
-	<PropertyGroup>
-		<GenerateDocumentationFile>True</GenerateDocumentationFile>
-		<PackageProjectUrl>https://github.com/Arkhorse/TLD-Mod-ImprovedTrader</PackageProjectUrl>
-		<RepositoryUrl>https://github.com/Arkhorse/TLD-Mod-ImprovedTrader</RepositoryUrl>
-		<PackageTags>the long dark;the long dark mods</PackageTags>
-		<NeutralLanguage>en-CA</NeutralLanguage>
-		<PackageLicenseFile>LICENSE</PackageLicenseFile>
-	</PropertyGroup>
+	<!-- DO NOT CHANGE ANYTHING BETWEEN THESE -->
 
 	<PropertyGroup>
-		<TheLongDarkPath>C:\Program Files (x86)\Steam\steamapps\common\TheLongDark</TheLongDarkPath>
-		<Mods>$(TheLongDarkPath)\Mods</Mods>
-		<Plugins>$(TheLongDarkPath)\Plugins</Plugins>
-		<UserData>$(TheLongDarkPath)\UserData</UserData>
-		<UserLibs>$(TheLongDarkPath)\UserLibs</UserLibs>
+		<!-- This should point to wherever your games primary EXE is -->
+		<TheLongDarkPath>C:\Games\Steam\steamapps\common\TheLongDark</TheLongDarkPath>
 	</PropertyGroup>
-
-	<ItemGroup>
-		<None Include="..\LICENSE">
-			<Pack>True</Pack>
-			<PackagePath>\</PackagePath>
-		</None>
-	</ItemGroup>
 
 	<!-- List of used references -->
 	<ItemGroup>
 		<!-- This is the base reference. MUST EXIST -->
-		<PackageReference Include="Waltz.Modding.TLD.Il2CppAssemblies.Windows" Version="2.52.0" />	
+		<PackageReference Include="MonsieurMeh.Modding.TLD.Il2CppAssemblies.Windows" Version="2.58.0" />
 	</ItemGroup>
+
 	<ItemGroup>
 	  <Reference Include="ComplexLogger">
-	    <HintPath>$(Mods)\ComplexLogger.dll</HintPath>
+	    <HintPath>$(TheLongDarkPath)\Mods\ComplexLogger.dll</HintPath>
 	  </Reference>
-
+		<Reference Include="ModComponent">
+			<HintPath>$(TheLongDarkPath)\Mods\ModComponent.dll</HintPath>
+		</Reference>
 		<Reference Include="ModSettings">
-			<HintPath>$(Mods)\ModSettings.dll</HintPath>
+			<HintPath>$(TheLongDarkPath)\Mods\ModSettings.dll</HintPath>
+		</Reference>
+			<Reference Include="ModData">
+			<HintPath>$(TheLongDarkPath)\Mods\ModData.dll</HintPath>
 		</Reference>
 	</ItemGroup>
 
@@ -59,13 +50,25 @@
 		<!--#region Modded Libraries-->
 		<!-- Only if your using ModSettings -->
 		<Using Include="ModSettings" />
+		<!-- Only if your using ModComponent -->
+		<Using Include="ModComponent" />
+		<!-- Only if your using LocalizationUtilities -->
+		<Using Include="LocalizationUtilities" />
+		<!-- Only if your using CraftingRevisions -->
+		<Using Include="CraftingRevisions" />
+		<!-- Only if your using GearSpawner -->
+		<Using Include="GearSpawner" />
+		<!-- Only if your using ModData -->
+		<Using Include="ModData" />
 		<!--#endregion-->
 	</ItemGroup>
 
 	<!-- This is a build event. It will copy your dll to the currently defined TheLongDarkPath's Mods folder -->
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
 		<!-- This copies the mods files to the games mod dir -->
-		<Copy SourceFiles="$(TargetPath)" DestinationFolder="$(Mods)" />
+		<Copy SourceFiles="$(TargetPath)" DestinationFolder="$(TheLongDarkPath)/Mods"/>
+		<!-- This copies the mods files to a designated release folder. Speeds up finding the dll after a build -->
+		<Copy SourceFiles="$(TargetPath)" DestinationFolder="$(ReleaseFolderPath)" />
 	</Target>
 
 </Project>

@@ -61,10 +61,10 @@ namespace ImprovedTrader.Patches
                         exchangeBoxScene = "MarshRegion";
                         break;
                     case "PostOfficeA":
-                        exchangeBoxScene = "MarshRegion";
+                        exchangeBoxScene = "MountainTownRegion";
                         break;
                     case "BlackrockPrisonSurvivalZone":
-                        exchangeBoxScene = "CanyonRoadTransitionZone";
+                        exchangeBoxScene = "BlackrockRegion";
                         break;
                 }
             }

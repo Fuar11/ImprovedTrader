@@ -12,7 +12,7 @@ namespace ImprovedTrader.Utilities
 		/// <param name="name"></param>
 		/// <returns></returns>
 		[return: NotNullIfNotNull(nameof(name))]
-		public static GearItem GetGearItemPrefab(string name) => GearItem.LoadGearItemPrefab(name);
+		public static GearItem GetGearItemPrefab(string name) => GearItem.InstantiateGearItem(name);
 
 		/// <summary>
 		/// 
@@ -36,7 +36,7 @@ namespace ImprovedTrader.Utilities
 		/// <typeparam name="T">The Component you want to get</typeparam>
 		/// <param name="name">Name of the prefab</param>
 		/// <returns>A valid prefab of the given Component or <see langword="null"/></returns>
-		public static T GetGearItemComponentPrefab<T>(string name) => GearItem.LoadGearItemPrefab(name).GetComponent<T>();
+		public static T GetGearItemComponentPrefab<T>(string name) => GearItem.InstantiateGearItem(name).GetComponent<T>();
 
 		/// <summary>
 		/// Normalizes the name given to remove extra bits using regex for most of the changes
