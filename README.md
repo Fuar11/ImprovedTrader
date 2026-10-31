@@ -12,11 +12,11 @@ Sutherland has magically fixed his leg and can now deliver trade goods from newl
 
 * Quonset Gas Station Radio -> box at Misanthrope's Island (vanilla)
 * Camp Office Radio -> along the tracks in the ravine transition zone
-* Community Hall Radio -> Derelict cabins in Pleasant Valley
-* Blackrock Barracks Radio -> Scenic view in Keeper's Pass South
+* Community Hall Radio -> Near the end of the road in Pleasant Valley
+* Blackrock Barracks Radio -> In the tipped over truck at the blocked bridge
 * Cannery Trailer Radio -> Broken lighthouse
-* Maintenance Shed Radio -> along the tracks in Forlorm Muskeg
-* Milton Post Office Radio -> along the tracks in Forlorm Muskeg
+* Maintenance Shed Radio -> along the tracks in Forlorn Muskeg
+* Milton Post Office Radio -> in the Milton Park (don't ask how Sutherland gets there)
 * Vacant Depot Radio -> along the train cars in Far Range Branch Line
 
 If you have an active trade initiated from one of these radios, it will always be present at the box associated with it. This is a limitation of how Hinterland designed the system for now. 
